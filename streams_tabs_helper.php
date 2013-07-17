@@ -40,6 +40,8 @@ function build_tabs($tabs, $stream, $namespace = null, $default = 'general')
             }
 
         }
+
+        if (empty($tab['fields'])) unset($tabs[$key]);
     }
 
     if (empty($tabs[$default]['fields'])) unset($tabs[$default]);
