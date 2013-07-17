@@ -36,5 +36,7 @@ function build_tabs($tabs, $stream, $namespace = null, $default = 'general')
         }
     }
 
+    if (empty($tabs[$default]['fields'])) unset($tabs[$default]);
+
     return $tabs;
 }
