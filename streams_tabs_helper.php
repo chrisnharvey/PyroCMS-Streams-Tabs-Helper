@@ -21,9 +21,15 @@ function build_tabs($tabs, $stream, $namespace = null, $default = 'general')
 
     foreach ($fields as $field) $tabs[$default]['fields'][$field->field_slug] = $field->field_slug;
 
-    foreach ($tabs as $key => $tab) {
+    foreach ($tabs as $key => &$tab) {
 
         if ($key == $default) continue;
+
+        foreach ($tab['fields'] as $field_key => $field) {
+            if ( ! in_array($field, $tabs[$default]['fields'])) {
+                unset($tab['fields'][$field_key]);
+            }
+        }
 
         foreach ($fields as $field) {
 
